@@ -63,7 +63,7 @@ func main() {
 
 	ports := os.Getenv("PORTS")
 	if ports == "" {
-		ports = "80"
+		ports = "8080"
 	}
 
 	portStrings := strings.Split(ports, ",")
