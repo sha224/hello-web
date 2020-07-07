@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"strings"
@@ -14,6 +16,20 @@ type helloWebHandler struct {
 	name     string
 }
 
+type contextKey struct {
+	key string
+}
+
+var connContextKey = &contextKey{"conn"}
+
+func getIPAddress(r *http.Request) string {
+	conn, ok := r.Context().Value(connContextKey).(net.Conn)
+	if ok == true {
+		return conn.LocalAddr().String()
+	}
+	return "Undetermined"
+}
+
 func (handler helloWebHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Request received on port %v from %v\n", handler.port, r.RemoteAddr)
 	w.WriteHeader(http.StatusOK)
@@ -22,6 +38,7 @@ func (handler helloWebHandler) ServeHTTP(w http.ResponseWriter, r *http.Request)
 	fmt.Fprintf(w, "\nHost Details:\n")
 	fmt.Fprintf(w, "Name: %v\n", handler.name)
 	fmt.Fprintf(w, "Hostname: %v\n", handler.hostname)
+	fmt.Fprintf(w, "IP Address: %v\n", getIPAddress(r))
 	fmt.Fprintf(w, "\nRequest Details:\n")
 	fmt.Fprintf(w, "Method: %v\n", r.Method)
 	fmt.Fprintf(w, "URL: %v\n", r.URL)
@@ -53,7 +70,15 @@ func main() {
 
 	for _, port := range portStrings {
 		log.Printf("Listening on port %v", port)
-		go http.ListenAndServe(":"+port, helloWebHandler{port, hostname, name})
+
+		server := http.Server{
+			Addr:    ":" + port,
+			Handler: helloWebHandler{port, hostname, name},
+			ConnContext: func(ctx context.Context, c net.Conn) context.Context {
+				return context.WithValue(ctx, connContextKey, c)
+			},
+		}
+		go server.ListenAndServe()
 	}
 
 	for {
