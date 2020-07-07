@@ -1,7 +1,7 @@
-FROM golang:1.14
+FROM golang:alpine
 WORKDIR /hello-web
 COPY main.go .
-RUN go build --ldflags '-s -w -linkmode "external" -extldflags "-static"' -o hello-web .
+RUN CGO_ENABLED=0 go build -ldflags "-s -w"
 
 FROM scratch
 COPY --from=0 /hello-web/hello-web .
