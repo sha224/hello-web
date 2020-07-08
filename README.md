@@ -1,8 +1,8 @@
 # hello-web
 
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sha224/hello-web)
-![Docker Pulls](https://img.shields.io/docker/pulls/sha224/hello-web)
-![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/sha224/hello-web)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sha224/hello-web)](https://hub.docker.com/r/sha224/hello-web)
+[![Docker Pulls](https://img.shields.io/docker/pulls/sha224/hello-web)](https://hub.docker.com/r/sha224/hello-web)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/sha224/hello-web)](https://hub.docker.com/r/sha224/hello-web)
 
 Simple image to run a web service on multiple ports. The web service shows various details about the host and the request. This image can be used for demo and test purposes.
 
