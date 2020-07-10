@@ -14,23 +14,23 @@ docker run --net="host" -e NAME="My Computer" -e PORTS="8080,9090" hello-web:lat
 
 Response Example:
 ```
-Hello, World! You have reached port 8080 of My Computer from 127.0.0.1:43902.
+Hello, World! You have reached port 8080 of My Computer from 127.0.0.1:60292.
 
 Host Details:
 Name: My Computer
 Hostname: liberty
-IP Address: 127.0.0.1:8080
+Server Address: 127.0.0.1:8080
+All Addresses: [127.0.0.1/8 192.168.0.213/24 172.17.0.1/16]
 
 Request Details:
 Method: GET
 URL: /
 Protocol: HTTP/1.1
+Host: localhost:8080
 Header: map[Accept:[*/*] User-Agent:[curl/7.68.0]]
 Body: {}
 Content Length: 0
 Transfer Encoding: []
-Host: localhost:8080
 Form Data: map[]
-Remote Address: 127.0.0.1:43902
-Request URI: /
+Remote Address: 127.0.0.1:60292
 ```
