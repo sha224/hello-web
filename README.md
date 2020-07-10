@@ -1,6 +1,7 @@
 # hello-web
 
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sha224/hello-web)](https://hub.docker.com/r/sha224/hello-web)
+[![Docker Stars](https://img.shields.io/docker/stars/sha224/hello-web)](https://hub.docker.com/r/sha224/hello-web)
 [![Docker Pulls](https://img.shields.io/docker/pulls/sha224/hello-web)](https://hub.docker.com/r/sha224/hello-web)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/sha224/hello-web)](https://hub.docker.com/r/sha224/hello-web)
 
