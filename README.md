@@ -9,7 +9,7 @@ Simple image to run a web service on multiple ports. The web service shows vario
 
 Usage Example:
 ```
-docker run --net="host" -e NAME="My Computer" -e PORTS="8080,9090" hello-web:latest
+docker run --net="host" -e NAME="My Computer" -e PORTS="8080,9090" sha224/hello-web:latest
 ```
 
 Response Example:
